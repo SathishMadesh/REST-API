@@ -23,6 +23,8 @@ def product_list(request, format = None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
+    return Response({'error': 'Unsupported method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        
 
 @api_view(['GET','PUT','DELETE'])
 def product_details(request,id, format = None):
